@@ -4,6 +4,9 @@ import com.re.coursecatalog.dto.request.CoursePatchRequestDto;
 import com.re.coursecatalog.dto.request.CourseRequestDto;
 import com.re.coursecatalog.dto.response.CourseResponseDto;
 import org.springframework.data.domain.Page;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 public interface CourseService {
     Page<CourseResponseDto> getAllCoursesWithPagination(int page, int size);
@@ -18,7 +21,7 @@ public interface CourseService {
 
     void deleteCourse(Long id);
 
-    CourseResponseDto uploadCourseImage(Long id, org.springframework.web.multipart.MultipartFile file) throws java.io.IOException;
+    CourseResponseDto uploadCourseImage(Long id, MultipartFile file) throws IOException;
 
     void deleteCourseImage(Long id);
 }

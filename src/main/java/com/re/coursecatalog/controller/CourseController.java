@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -89,7 +90,7 @@ public class CourseController {
                 .build());
     }
 
-    @org.springframework.web.bind.annotation.DeleteMapping("/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCourse(@PathVariable Long id) {
         courseService.deleteCourse(id);
         return ResponseEntity.noContent().build();
@@ -117,7 +118,7 @@ public class CourseController {
         }
     }
 
-    @org.springframework.web.bind.annotation.DeleteMapping("/{id}/image")
+    @DeleteMapping("/{id}/image")
     public ResponseEntity<Void> deleteImage(@PathVariable Long id) {
         courseService.deleteCourseImage(id);
         return ResponseEntity.noContent().build();

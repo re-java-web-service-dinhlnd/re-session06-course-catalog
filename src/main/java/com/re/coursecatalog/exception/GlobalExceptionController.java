@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 @RestControllerAdvice
 public class GlobalExceptionController {
@@ -31,8 +32,8 @@ public class GlobalExceptionController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 
-    @ExceptionHandler(org.springframework.web.multipart.MaxUploadSizeExceededException.class)
-    public ResponseEntity<ApiResponse<?>> handleMaxSizeException(org.springframework.web.multipart.MaxUploadSizeExceededException exception) {
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    public ResponseEntity<ApiResponse<?>> handleMaxSizeException(MaxUploadSizeExceededException exception) {
         ApiResponse<?> response = ApiResponse.builder()
                 .status(HttpStatus.BAD_REQUEST.value())
                 .message("File quá lớn! Vui lòng upload file dưới 5MB.")
